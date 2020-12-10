@@ -25,9 +25,11 @@ export const registerAccount = async (
   accountObjId: string,
   user: IUserDocument,
 ) => {
+  const before = user.invitations.length;
   user.invitations = user.invitations?.filter(
     (invitation) => String(invitation.accounts) !== accountObjId,
   );
+  if (before === user.invitations.length) return Promise.resolve();
   return Promise.all([
     user.save(),
     AccountModel.updateOne(
