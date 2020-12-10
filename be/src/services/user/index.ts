@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { AccountModel, IAccountDocument } from 'models/account';
 import { IUserDocument } from 'models/user';
 
@@ -18,5 +19,21 @@ export const getInvitation = async (user: IUserDocument) => {
   );
   const results = await Promise.all(account);
   return results;
+};
+
+export const registerAccount = async (
+  accountObjId: string,
+  user: IUserDocument,
+) => {
+  user.invitations = user.invitations?.filter(
+    (invitation) => String(invitation.accounts) !== accountObjId,
+  );
+  return Promise.all([
+    user.save(),
+    AccountModel.updateOne(
+      { _id: accountObjId },
+      { $addToSet: { users: user } },
+    ),
+  ]);
 };
 export default titleByAccountId;

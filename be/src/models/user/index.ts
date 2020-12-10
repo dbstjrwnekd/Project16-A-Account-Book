@@ -42,7 +42,7 @@ export interface IUserDocument extends Document {
   salt?: String;
   nickname: String;
   profileUrl?: String;
-  invitations?: Array<IInvitation>;
+  invitations: Array<IInvitation>;
 }
 
 export const UserModel = model<IUserDocument>('users', UserSchema);
