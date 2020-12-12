@@ -9,7 +9,7 @@ export interface MonthHeaderInfoButton extends ButtonStyleProps {
 }
 export const MonthButton = styled(Button)<MonthHeaderInfoButton>`
   color: ${({ color, theme }) =>
-    color ? theme.color[color] : theme.color.white};
+    color ? theme.color[color] : theme.color.brandColor};
   border: 0;
   width: 100%;
   height: 50%;
@@ -24,13 +24,14 @@ export const MonthButton = styled(Button)<MonthHeaderInfoButton>`
 
 export const MonthInfoHeaderContainer = styled.section`
   display: grid;
+  z-index: -1;
   grid-template-columns: 3fr 5fr 1fr;
   margin: 0.3rem 0.1rem;
+  border: 0.4rem solid ${({ theme }) => theme.color.brandColor};
   border-radius: 10px;
   padding: 0 0.5rem;
   min-height: 4rem;
   justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.color.brandColor};
+  background: ${({ theme }) => theme.color.white};
 `;
-export default {};

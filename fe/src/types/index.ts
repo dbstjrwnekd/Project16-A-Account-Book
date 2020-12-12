@@ -18,7 +18,9 @@ export interface TransactionDBType {
   };
   price: number;
 }
-
+export interface IDateTransactionObj {
+  [date: string]: TransactionDBType[];
+}
 export interface IMethod {
   _id: string;
   title: string;
@@ -33,6 +35,16 @@ export interface ICategory {
   __v?: number;
 }
 
+export interface IUser {
+  _id: string;
+  timezone: string;
+  startOfWeek: string;
+  id: string;
+  nickname: string;
+  profileUrl: string;
+  __v: number;
+}
+
 export interface ICheckCategory extends ICategory {
   checked: boolean;
 }
@@ -41,7 +53,7 @@ export interface ICheckMethod extends IMethod {
 }
 export interface IFilterCategory {
   disabled: boolean;
-  list: ICheckCategory[];
+  list: Array<string>;
 }
 
 export interface ICategoryStatistics extends Omit<ICategory, '__v' | 'type'> {
@@ -58,4 +70,9 @@ export interface IStatistics {
   totalPrice: ITotalPrice;
   incomeCategories: ICategoryStatistics[];
   expenseCategories: ICategoryStatistics[];
+}
+
+export interface IDateTotalprice {
+  date: string;
+  totalPrice: number;
 }

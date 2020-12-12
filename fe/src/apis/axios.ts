@@ -6,6 +6,13 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (response) => response.data,
-  (error) => Promise.reject(error),
+  (error) => {
+    if (error.response.status === 401) {
+      window.location.href = '/login';
+    } else {
+      window.location.href = '/not-found';
+    }
+    return Promise.reject(error);
+  },
 );
 export default instance;

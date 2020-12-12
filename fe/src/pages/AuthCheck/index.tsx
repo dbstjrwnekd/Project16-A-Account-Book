@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-// import { TransactionStore } from 'stores/Transaction';
+import axios from 'apis/axios';
+import url from 'apis/urls';
 
 const AuthCheck = () => {
-  useEffect(() => {
-    // const account = sessionStorage.getItem('account');
-    // if (account) {
-    //   TransactionStore.setAccountObjId(JSON.parse(account).id);
-    // }
-  });
+  useEffect(() => {});
+  if (!sessionStorage.getItem('userObjId')) {
+    axios.get(`${url.userInfo}`).then((res) => {
+      sessionStorage.setItem('userObjId', (res as any)._id);
+    });
+  }
   return <></>;
 };
 

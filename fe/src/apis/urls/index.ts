@@ -1,14 +1,35 @@
 export default {
-  transaction: (accountObjId: string) => `/api/transactions/${accountObjId}`,
+  transaction: (accountObjId: string) => `/api/${accountObjId}/transactions/`,
+  transactionUpdate: (accountObjId: string, transactionObjid: string) =>
+    `/api/${accountObjId}/transactions/update/${transactionObjid}`,
+  transactionDelete: (accountObjId: string, transactionObjid: string) =>
+    `/api/${accountObjId}/transactions/${transactionObjid}`,
+  transactionDetail: (accountObjId: string, transactionObjId: string) =>
+    `/api/${accountObjId}/transactions/detail/${transactionObjId}`,
   github: '/api/auth/github',
   githubAccessToken: '/api/auth/github/access_token?code=',
-  userTitle: '/api/user/titleByAccountId?accountId=',
+  user: `/api/users`,
+  userInfo: `/api/users/userInfo`,
+  userTitle: '/api/users/titleByAccountId?accountId=',
   category: (accountObjId: string) => {
-    return `/api/categories/${accountObjId}`;
+    return `/api/${accountObjId}/categories/`;
   },
-  postCategory: 'api/categories',
+  defaultCategory: 'api/categories',
   account: '/api/accounts',
-  method: (accountObjId: string) => `/api/methods/${accountObjId}`,
+  postCategory: '/api/categories',
+  method: (accountObjId: string) => `/api/${accountObjId}/methods/`,
+  methodDeleteOrUpdate: (accountObjId: string, methodObjId: string) =>
+    `/api/${accountObjId}/methods/${methodObjId}`,
+
   statistics: (accountObjId: string) =>
-    `/api/categories/statistics/${accountObjId}`,
+    `/api/${accountObjId}/categories/statistics/`,
+  categories: (accountObjId: string) => `/api/${accountObjId}/categories`,
+  accountUpdate: (accountObjId: string) => `/api/${accountObjId}/accounts`,
+  accountInfo: (owner: string, title: string) =>
+    `/api/accounts/info?title=${title}&owner=${owner}`,
+  mms: '/api/mms',
+  deleteCategory: (accountObjId: string, categoryObjId: string) =>
+    `/api/${accountObjId}/categories/${categoryObjId}`,
+
+  getUserInvitation: () => `/api/users/accounts`,
 };
