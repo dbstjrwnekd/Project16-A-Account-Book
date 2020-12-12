@@ -41,6 +41,7 @@
       "pre-commit": "lint-staged"
     }
   },
+  "proxy":"http:localhost:4000",
   "lint-staged": {
     "*.{js,jsx,tsx,ts}": [
       "prettier --write",
