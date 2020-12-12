@@ -19,6 +19,8 @@ const useAccountInfo = () => {
     }
 
     const res = await accountsAPI.getAccountInfo(owner, title);
+    console.log(res);
+
     TransactionStore.setAccountObjId(res._id);
     setLoading(false);
   };
