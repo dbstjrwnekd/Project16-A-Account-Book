@@ -40,7 +40,6 @@ export const TabBottomArea = styled.div`
   bottom: 5rem;
   right: 1.5rem;
   @media only screen and (min-width: 768px) {
-    /* right: calc(-50% + 350px); */
     right: calc(50% - 330px);
   }
   @media only screen and (min-width: 1024px) {
