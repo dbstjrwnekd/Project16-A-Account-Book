@@ -12,8 +12,6 @@ import AuthCheck from 'pages/AuthCheck';
 import StatisticsPage from 'pages/StatisticsPage';
 import StatisticsDetailPage from 'pages/StatisticsDetailPage';
 import useAccountInfo from 'hooks/useAccountInfo';
-import LoginPage from './pages/LoginPage';
-import OauthCallbackPage from './pages/OauthCallbackPage';
 import MainPage from './pages/MainPage';
 import CreateTransactionPage from './pages/CreateTransactionPage';
 import UpdateTransactionPage from './pages/UpdateTransactionPage';
@@ -67,22 +65,7 @@ const TransactionRouter = () => {
   );
 };
 
-const LoginRouter = () => {
-  const { url } = useRouteMatch();
-  return (
-    <>
-      <Switch>
-        <Route
-          exact
-          path={`${url}/oauth-callback`}
-          component={OauthCallbackPage}
-        />
-        <Route path={`${url}`} component={LoginPage} />
-      </Switch>
-    </>
-  );
-};
-
+const LoginRouter = React.lazy(() => import('routes/Login'));
 const AccountRouter = React.lazy(() => import('routes/Account'));
 
 const App = () => {
